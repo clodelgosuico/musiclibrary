@@ -1,0 +1,32 @@
+{
+  "name": "musiclibrary",
+  "version": "1.0.0",
+  "description": "music library command line application",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "git",
+    "cli",
+    "music"
+  ],
+  "author": "Clodel Gosuico",
+  "license": "ISC",
+  "dependencies": {
+    "clear": "0.0.1",
+    "clui": "^0.3.1",
+    "columnify": "^1.5.4",
+    "inquirer": "^1.1.3",
+    "lodash": "^4.16.1",
+    "minimist": "^1.2.0",
+    "preferences": "^0.2.1"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.2",
+    "jasmine-core": "^2.5.2",
+    "mocha": "^3.1.0",
+    "mocha-sinon": "^1.1.6",
+    "sinon": "^1.17.6"
+  }
+}

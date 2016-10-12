@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>MusicLibraryModel.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="ArtistStatsModel.html">
+                  ArtistStatsModel.js
+                </a>
+              
+                
+                <a class="source" href="CommandParser.html">
+                  CommandParser.js
+                </a>
+              
+                
+                <a class="source" href="MusicLibraryController.html">
+                  MusicLibraryController.js
+                </a>
+              
+                
+                <a class="source" href="MusicLibraryModel.html">
+                  MusicLibraryModel.js
+                </a>
+              
+                
+                <a class="source" href="TrackStatsModel.html">
+                  TrackStatsModel.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>MusicLibraryModel.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+<span class="hljs-meta">    'use strict'</span>;
+
+    <span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lodash'</span>);
+
+    <span class="hljs-keyword">var</span> musicLibrary = [];
+    <span class="hljs-keyword">var</span> trackStats = [];
+    <span class="hljs-keyword">var</span> artistStats = [];
+
+    <span class="hljs-built_in">module</span>.exports = {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>adds data to the musicLibrary
+music is expected to be a JSON obj</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        addMusic: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">music</span>) </span>{
+            <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.hasMusic(music)) {
+                musicLibrary = _.sortedUniq(_.concat(musicLibrary, music));
+            }
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>finds data in the music library
+music is expected to be a JSON obj</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        findMusic: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">music</span>) </span>{
+            <span class="hljs-keyword">return</span> _.find(musicLibrary, music);
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>returns if music exists in the library
+music is expected to be a JSON obj</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        hasMusic: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">music</span>) </span>{
+            <span class="hljs-keyword">return</span> _.some(musicLibrary, music);
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>adds an artist</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        addArtist: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">artist</span>) </span>{
+            <span class="hljs-keyword">this</span>.addMusic({
+                <span class="hljs-attr">artist</span>: artist
+            });
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>returns a boolean if an artist exists</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        hasArtist: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">artist</span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hasMusic({
+                <span class="hljs-attr">artist</span>: artist
+            });
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>adds an album</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        addAlbum: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">album, artist</span>) </span>{
+            <span class="hljs-keyword">this</span>.addMusic({
+                <span class="hljs-attr">album</span>: album,
+                <span class="hljs-attr">artist</span>: artist
+            });
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>returns a boolean if an album exists</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        hasAlbum: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">album, artist</span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hasMusic({
+                <span class="hljs-attr">album</span>: album,
+                <span class="hljs-attr">artist</span>: artist
+            });
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>returns the album data</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        getAlbum: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">album, artist</span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.findMusic({
+                <span class="hljs-attr">album</span>: album,
+                <span class="hljs-attr">artist</span>: artist
+            });
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>adds a track to an album</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        addTrack: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">track, album, artist</span>) </span>{
+            <span class="hljs-keyword">var</span> existingMusic,
+                index,
+                tracks,
+                music = {
+                <span class="hljs-attr">album</span>: album,
+                <span class="hljs-attr">artist</span>: artist
+            };
+
+            existingMusic = <span class="hljs-keyword">this</span>.getAlbum(album, artist);
+            index = _.indexOf(musicLibrary, existingMusic);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>get the tracks with default empty array</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            tracks = _.get(existingMusic, <span class="hljs-string">'tracks'</span>, []);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>concatenate and sort the unique tracks</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            tracks = _.sortedUniq(_.concat(tracks, track));
+
+            music.tracks = tracks;
+
+            musicLibrary.splice(index, <span class="hljs-number">1</span>, music);
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>returns a boolean whether the track exists</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        hasTrack: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">track, album, artist</span>) </span>{
+            <span class="hljs-keyword">var</span> music = <span class="hljs-keyword">this</span>.getAlbum(album, artist);
+
+            <span class="hljs-keyword">return</span> (_.has(music, <span class="hljs-string">'tracks'</span>) &amp;&amp; _.includes(music.tracks, track));
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>gets the list of albums by artist</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        getAlbumsBy: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">artist</span>) </span>{
+            <span class="hljs-keyword">var</span> albums = [],
+                results = _.each(musicLibrary, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">music</span>) </span>{
+                <span class="hljs-keyword">if</span> (music.artist === artist &amp;&amp; music.album) {
+                    albums.push(music.album);
+                }
+            });
+
+            <span class="hljs-keyword">return</span> albums;
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>gets all the tracks in an album</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        getTracks: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">album, artist</span>) </span>{
+            <span class="hljs-keyword">var</span> music = <span class="hljs-keyword">this</span>.getAlbum(album, artist);
+
+            <span class="hljs-keyword">if</span> (music.tracks) {
+                <span class="hljs-keyword">return</span> music.tracks;
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">return</span> [];
+            }
+        }
+    };
+})();</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

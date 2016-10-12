@@ -1,0 +1,46 @@
+MUSIC LIBRARY APP
+author: Clodel Gosuico
+
+
+SETUP INSTRUCTIONS
+
+1. Install node
+
+    Download and install from https://nodejs.org/en/
+
+2. run
+
+    ./setup.sh
+
+
+RUN AUTOMATED TEST CASES
+
+In the directory where this is installed, execute:
+
+npm test
+
+
+RUNNING THE APP
+
+In the directory where this is installed, execute:
+
+node index.js
+
+
+DOCUMENTATION
+
+can be found in the docs directory
+
+
+### Questions
+1. How have you gained confidence in your code?
+I coded this using TDD so I was writing the unit test cases before the actual code. It gave me instant feedback any new code or refactor broke any pre-existing functionality. 
+
+2. One of the things we'll be evaluating is how your code is organized.
+Why did you choose the structure that you did?
+What principles were important to you as you organized this code?
+
+I wanted to isolate separation of concerns as well as make it easy to unit test. For example, I have a module which just parses a command line into arguments and takes into account quotes. I also made sure logic that should be in the controller wasn't in the model. For this use case, a model and controller objects seemed to fit best. If in the future a database was implemented, the model objects could easily be refactored for a database without impacting the controller.
+
+3. What are the performance characteristics of your implementation? Does it perform some operations faster than others? Explain any tradeoffs you made in architecting your solution.
+I separated out the track stats and artist stats from the music library object. By separating it from the music library, it will not have to iterate through all the music library data just to get at the track or artist stats information. Since the track stat were stored as json objects in memory, I created a track hash by concatenating the track+album+artist. The tradeoff is that if the music library data changes for the track like the track name gets changed, then the relation to the music library is lost. An advantage of this is if a reset stats functionality is ever desired.
